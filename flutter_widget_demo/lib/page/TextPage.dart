@@ -4,8 +4,6 @@ import 'package:flutter_widget_demo/text/RichTextWidget.dart';
 import 'package:flutter_widget_demo/text/TextWidget.dart';
 
 class TextPage extends StatelessWidget {
-  List<String> textWidgets = ['Text', 'RichText', 'DefaultTextStyle'];
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

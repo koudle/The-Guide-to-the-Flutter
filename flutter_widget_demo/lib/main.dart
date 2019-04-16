@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_demo/page/ImagePage.dart';
 import 'package:flutter_widget_demo/page/TextPage.dart';
 
 void main() => runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Widget Demo'),
       routes: {
         '/Page0': (context) => TextPage(),
+        '/Page1': (context) => ImagePage(),
       },
     );
   }
