@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_demo/page/ImagePage.dart';
+import 'package:flutter_widget_demo/page/TextFieldPage.dart';
 import 'package:flutter_widget_demo/page/TextPage.dart';
 
 void main() => runApp(MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/Page0': (context) => TextPage(),
         '/Page1': (context) => ImagePage(),
+        '/Page2': (context) => TextFieldPage(),
       },
     );
   }
@@ -32,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> widgets = ['第28节 -- 文本框', '第29节 -- 图片和Icon'];
+  List<String> widgets = ['第28节 -- 文本框', '第29节 -- 图片和Icon','第30节 -- 输入框'];
 
   @override
   Widget build(BuildContext context) {
