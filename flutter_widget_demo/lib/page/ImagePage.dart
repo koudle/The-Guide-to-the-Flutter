@@ -9,7 +9,7 @@ class ImagePage extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('文本框'),
+        title: Text('图片和Icon'),
       ),
       body: ListView(
         children: <Widget>[

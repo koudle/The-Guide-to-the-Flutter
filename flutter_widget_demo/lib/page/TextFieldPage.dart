@@ -7,7 +7,7 @@ class TextFieldPage extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('文本框'),
+        title: Text('输入框'),
       ),
       body: ListView(
         children: <Widget>[
