@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_demo/page/BottomSheetPage.dart';
 import 'package:flutter_widget_demo/page/ButtonPage.dart';
 import 'package:flutter_widget_demo/page/DialogPage.dart';
+import 'package:flutter_widget_demo/page/FlexPage.dart';
 import 'package:flutter_widget_demo/page/GestureDetectorPage.dart';
 import 'package:flutter_widget_demo/page/ImagePage.dart';
+import 'package:flutter_widget_demo/page/LinearPage.dart';
 import 'package:flutter_widget_demo/page/MenuPage.dart';
 import 'package:flutter_widget_demo/page/SnackBarPage.dart';
+import 'package:flutter_widget_demo/page/StackPage.dart';
 import 'package:flutter_widget_demo/page/TextFieldPage.dart';
 import 'package:flutter_widget_demo/page/TextPage.dart';
+import 'package:flutter_widget_demo/page/WrapPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,6 +35,10 @@ class MyApp extends StatelessWidget {
         '/Page6': (context) => BottomSheetPage(),
         '/Page7': (context) => MenuPage(),
         '/Page8': (context) => GestureDetectorPage(),
+        '/Page9': (context) => FlexPage(),
+        '/Page10': (context) => LinearPage(),
+        '/Page11': (context) => WrapPage(),
+        '/Page12': (context) => StackPage(),
       },
     );
   }
@@ -55,7 +63,11 @@ class _MyHomePageState extends State<MyHomePage> {
     '第33节 -- 对话框',
     '第34节 -- BottomSheet',
     '第35节 -- 菜单栏',
-    '第36节 -- 手势识别Widget'
+    '第36节 -- 手势识别Widget',
+    '第39节 -- 弹性布局',
+    '第40节 -- 线性布局',
+    '第41节 -- 流式布局',
+    '第42节 -- 层叠布局',
   ];
 
   @override
