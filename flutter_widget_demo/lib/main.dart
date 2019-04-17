@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_demo/page/BottomSheetPage.dart';
 import 'package:flutter_widget_demo/page/ButtonPage.dart';
+import 'package:flutter_widget_demo/page/ContainersPage.dart';
 import 'package:flutter_widget_demo/page/DialogPage.dart';
 import 'package:flutter_widget_demo/page/FlexPage.dart';
 import 'package:flutter_widget_demo/page/GestureDetectorPage.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/Page10': (context) => LinearPage(),
         '/Page11': (context) => WrapPage(),
         '/Page12': (context) => StackPage(),
+        '/Page13': (context) => ContainersPage(),
       },
     );
   }
@@ -68,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     '第40节 -- 线性布局',
     '第41节 -- 流式布局',
     '第42节 -- 层叠布局',
+    '第43节 -- 容器类Widget',
   ];
 
   @override
