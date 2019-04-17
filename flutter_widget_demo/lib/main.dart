@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_demo/page/BottomSheetPage.dart';
 import 'package:flutter_widget_demo/page/ButtonPage.dart';
 import 'package:flutter_widget_demo/page/DialogPage.dart';
+import 'package:flutter_widget_demo/page/GestureDetectorPage.dart';
 import 'package:flutter_widget_demo/page/ImagePage.dart';
+import 'package:flutter_widget_demo/page/MenuPage.dart';
 import 'package:flutter_widget_demo/page/SnackBarPage.dart';
 import 'package:flutter_widget_demo/page/TextFieldPage.dart';
 import 'package:flutter_widget_demo/page/TextPage.dart';
@@ -27,6 +29,8 @@ class MyApp extends StatelessWidget {
         '/Page4': (context) => SnackBarPage(),
         '/Page5': (context) => DialogPage(),
         '/Page6': (context) => BottomSheetPage(),
+        '/Page7': (context) => MenuPage(),
+        '/Page8': (context) => GestureDetectorPage(),
       },
     );
   }
@@ -42,7 +46,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> widgets = ['第28节 -- 文本框', '第29节 -- 图片和Icon','第30节 -- 输入框','第31节 -- 按钮','第32节 -- SnackBar','第33节 -- 对话框','第34节 -- BottomSheet'];
+  List<String> widgets = [
+    '第28节 -- 文本框',
+    '第29节 -- 图片和Icon',
+    '第30节 -- 输入框',
+    '第31节 -- 按钮',
+    '第32节 -- SnackBar',
+    '第33节 -- 对话框',
+    '第34节 -- BottomSheet',
+    '第35节 -- 菜单栏',
+    '第36节 -- 手势识别Widget'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return GestureDetector(
               child: ListTile(title: Text(widgets[index])),
               onTap: () {
-                Navigator.pushNamed(context, '/Page'+index.toString());
+                Navigator.pushNamed(context, '/Page' + index.toString());
               },
             );
           },
