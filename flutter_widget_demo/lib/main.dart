@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_demo/page/ButtonPage.dart';
+import 'package:flutter_widget_demo/page/DialogPage.dart';
 import 'package:flutter_widget_demo/page/ImagePage.dart';
 import 'package:flutter_widget_demo/page/SnackBarPage.dart';
 import 'package:flutter_widget_demo/page/TextFieldPage.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/Page2': (context) => TextFieldPage(),
         '/Page3': (context) => ButtonPage(),
         '/Page4': (context) => SnackBarPage(),
+        '/Page5': (context) => DialogPage(),
       },
     );
   }
@@ -38,7 +40,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> widgets = ['第28节 -- 文本框', '第29节 -- 图片和Icon','第30节 -- 输入框','第31节 -- 按钮','第32节 -- SnackBar'];
+  List<String> widgets = ['第28节 -- 文本框', '第29节 -- 图片和Icon','第30节 -- 输入框','第31节 -- 按钮','第32节 -- SnackBar','第33节 -- 对话框'];
 
   @override
   Widget build(BuildContext context) {
