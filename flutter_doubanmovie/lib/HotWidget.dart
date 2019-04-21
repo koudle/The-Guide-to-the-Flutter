@@ -74,7 +74,7 @@ class HotWidgetState extends State<HotWidget> {
                       child: TabBarView(
                         physics: ClampingScrollPhysics(),
                         children: <Widget>[
-                          HotMoviesListWidget(),
+                          HotMoviesListWidget(curCity),
                           Center(
                             child: Text('即将上映'),
                           )
