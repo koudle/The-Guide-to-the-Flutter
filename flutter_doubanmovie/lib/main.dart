@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_doubanmovie/CitysWidget.dart';
 import 'package:flutter_doubanmovie/HotWidget.dart';
 import 'package:flutter_doubanmovie/MineWidget.dart';
 import 'package:flutter_doubanmovie/MoviesWidget.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  debugPaintSizeEnabled = true;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
