@@ -1,16 +1,11 @@
 # flutter_widget_demo
 
-A new Flutter project.
+Widget 使用的 Demo 代码
 
-## Getting Started
+## 注意事项
 
-This project is a starting point for a Flutter application.
+ Demo 代码里都有 `main()` 方法 和 `MaterialApp` ，主要是为了方便读者复制代码，在自己的独立 Flutter APP 里运行，在实际开发 APP 过程中，不会这样子开发。
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+想要知道 Flutter APP 实际如何开发，请看 `Flutter实战篇`。
