@@ -1,5 +1,6 @@
 package com.example.flutter_doubanmovie;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -15,12 +16,17 @@ public class MainActivity extends FlutterActivity {
     super.onCreate(savedInstanceState);
     GeneratedPluginRegistrant.registerWith(this);
 
-    new MethodChannel(getFlutterView(), "flutter.doubanmovie/toast").setMethodCallHandler(new MethodChannel.MethodCallHandler() {
+    new MethodChannel(getFlutterView(), "flutter.doubanmovie/buy").setMethodCallHandler(new MethodChannel.MethodCallHandler() {
       @Override
       public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
         switch (methodCall.method){
-          case "showToast":
-            Toast.makeText(getBaseContext(),(String)methodCall.arguments,Toast.LENGTH_SHORT).show();
+          case "buyTicket":
+            //显示dialog
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("买票")
+                    .setMessage((String)methodCall.arguments)
+                    .create().show();
+            //返回消息
             result.success(0);
             return;
           default:

@@ -15,7 +15,7 @@ class HotMovieItemWidget extends StatefulWidget {
 }
 
 class HotMovieItemWidgetState extends State<HotMovieItemWidget> {
-  static const eventChannel = const MethodChannel('flutter.doubanmovie/toast');
+  static const methodChannel = const MethodChannel('flutter.doubanmovie/buy');
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class HotMovieItemWidgetState extends State<HotMovieItemWidget> {
                   highlightedBorderColor: Colors.red,
                   borderSide: BorderSide(color: Colors.red),
                   onPressed: () {
-                    eventChannel.invokeMethod('showToast',
+                    methodChannel.invokeMethod('buyTicket',
                         '购买 ' + widget.hotMovieData.title + ' 电影票一张');
                   },
                 )
