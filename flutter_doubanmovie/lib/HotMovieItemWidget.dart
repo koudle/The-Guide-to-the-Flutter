@@ -15,8 +15,7 @@ class HotMovieItemWidget extends StatefulWidget {
 }
 
 class HotMovieItemWidgetState extends State<HotMovieItemWidget> {
-
-  static const eventChannel =const MethodChannel('flutter.doubanmovie/toast');
+  static const eventChannel = const MethodChannel('flutter.doubanmovie/toast');
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +50,11 @@ class HotMovieItemWidgetState extends State<HotMovieItemWidget> {
                   ),
                   Text('导演: ' + widget.hotMovieData.directors,
                       style: TextStyle(fontSize: 14, color: Colors.black54)),
-                  Text('主演: ' + widget.hotMovieData.casts,
-                      style: TextStyle(fontSize: 14, color: Colors.black54)),
+                  Expanded(
+                    flex: 1,
+                    child: Text('主演: ' + widget.hotMovieData.casts,
+                        style: TextStyle(fontSize: 14, color: Colors.black54)),
+                  ),
                 ],
               ),
             ),
@@ -62,17 +64,22 @@ class HotMovieItemWidgetState extends State<HotMovieItemWidget> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(widget.hotMovieData.watchedPeople.toString()+'人看过',style: TextStyle(color: Colors.red,fontSize: 14),),
+                Text(
+                  widget.hotMovieData.watchedPeople.toString() + '人看过',
+                  style: TextStyle(color: Colors.red, fontSize: 14),
+                ),
                 OutlineButton(
-                  child: Text('购票',style: TextStyle(fontSize: 16),),
+                  child: Text(
+                    '购票',
+                    style: TextStyle(fontSize: 16),
+                  ),
                   color: Colors.red,
                   textColor: Colors.red,
                   highlightedBorderColor: Colors.red,
-                  borderSide: BorderSide(
-                    color: Colors.red
-                  ),
+                  borderSide: BorderSide(color: Colors.red),
                   onPressed: () {
-                    eventChannel.invokeMethod('showToast','购买 '+widget.hotMovieData.title+' 电影票一张');
+                    eventChannel.invokeMethod('showToast',
+                        '购买 ' + widget.hotMovieData.title + ' 电影票一张');
                   },
                 )
               ],

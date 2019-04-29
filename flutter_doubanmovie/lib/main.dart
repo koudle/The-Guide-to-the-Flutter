@@ -6,7 +6,7 @@ import 'package:flutter_doubanmovie/MineWidget.dart';
 import 'package:flutter_doubanmovie/MoviesWidget.dart';
 
 void main() {
-  debugPaintSizeEnabled = true;
+  debugPaintSizeEnabled = false;
   runApp(MyApp());
 }
 
