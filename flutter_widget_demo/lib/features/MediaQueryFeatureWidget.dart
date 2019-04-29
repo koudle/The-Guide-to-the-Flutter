@@ -31,10 +31,12 @@ class BodyWidget extends StatelessWidget {
         RaisedButton(
           child: Text('getSize'),
           onPressed: () {
+            //获取屏幕的宽高
             print("Screen width:" +
                 MediaQuery.of(context).size.width.toString() +
                 " Screen height:" +
                 MediaQuery.of(context).size.height.toString());
+            //获取子Widget 的宽高
             print("Ttext width:" +
                 _globalKey.currentContext.size.width.toString() +
                 " Screen height:" +

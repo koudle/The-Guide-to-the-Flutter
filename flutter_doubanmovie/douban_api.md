@@ -70,7 +70,7 @@ directors 是导演列表，是一个 json 数组，里面存的是导演的信�
 | name | string | 主演名字 |
 | id| string | 主演id |
  
-
+这里主演信息和 导演信息的格式是一样的。
 ## 2、获取电影Top250：
 
 接口：https://api.douban.com/v2/movie/top250
