@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_doubanmovie/CitysWidget.dart';
-import 'package:flutter_doubanmovie/HotWidget.dart';
-import 'package:flutter_doubanmovie/MineWidget.dart';
-import 'package:flutter_doubanmovie/MoviesWidget.dart';
+import 'package:flutter_doubanmovie/citys/CitysWidget.dart';
+import 'package:flutter_doubanmovie/hot/HotWidget.dart';
+import 'package:flutter_doubanmovie/mine/MineWidget.dart';
+import 'package:flutter_doubanmovie/movies/MoviesWidget.dart';
 
 void main() {
   debugPaintSizeEnabled = false;

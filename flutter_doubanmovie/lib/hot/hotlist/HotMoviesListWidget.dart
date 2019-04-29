@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_doubanmovie/HotMovieData.dart';
-import 'package:flutter_doubanmovie/HotMovieItemWidget.dart';
+import 'package:flutter_doubanmovie/hot/hotlist/data/HotMovieData.dart';
+import 'package:flutter_doubanmovie/hot/hotlist/item/HotMovieItemWidget.dart';
 import 'package:http/http.dart' as http;
 
 class HotMoviesListWidget extends StatefulWidget {

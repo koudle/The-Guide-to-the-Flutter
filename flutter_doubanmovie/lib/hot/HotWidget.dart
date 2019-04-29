@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_doubanmovie/HotMoviesListWidget.dart';
+import 'package:flutter_doubanmovie/hot/hotlist/HotMoviesListWidget.dart';
 
 class HotWidget extends StatefulWidget {
   @override
