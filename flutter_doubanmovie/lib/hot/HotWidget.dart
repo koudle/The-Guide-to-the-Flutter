@@ -40,6 +40,7 @@ class HotWidgetState extends State<HotWidget> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    print('HotWidgetState build');
     if (curCity != null && curCity.isNotEmpty) {//如果 curCity 不为空
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
