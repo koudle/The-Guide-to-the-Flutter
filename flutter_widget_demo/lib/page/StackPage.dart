@@ -15,7 +15,7 @@ class StackPage extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             child: ListTile(
-              title: Text('Wrap'),
+              title: Text('Stack'),
             ),
             onTap: () {
               Navigator.push(context,

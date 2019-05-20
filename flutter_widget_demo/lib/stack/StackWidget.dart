@@ -15,7 +15,6 @@ class StackWidget extends StatelessWidget {
         body: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-            Text('Hello Flutter'),
             Positioned(
               left: 50,
               top: 100,
@@ -24,7 +23,8 @@ class StackWidget extends StatelessWidget {
                 width: 200,
                 fit: BoxFit.cover,
               ),
-            )
+            ),
+            Text('Hello Flutter'),
           ],
         ),
       ),

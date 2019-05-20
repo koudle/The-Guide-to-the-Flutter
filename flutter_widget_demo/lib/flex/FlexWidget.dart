@@ -16,33 +16,69 @@ class FlexWidget extends StatelessWidget {
                   width: 30.0,
                   height: 30.0,
                 ),
-                Text('三个 Widget 的 flex：1:2:1'),
                 Container(
-                  color: Colors.purple,
+                  child: Flex(
+                    direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Flexible(
+                        child: Container(
+                          color: Colors.yellow,
+                          child: Text('使用 Flexible 来包裹 子Widget'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 30.0,
+                  height: 30.0,
+                ),
+                Container(
                   child: Flex(
                     direction: Axis.horizontal,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
+                        child: Container(
+                          color: Colors.yellow,
+                          child: Text('使用 Expanded 来包裹 子Widget'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 30.0,
+                  height: 30.0,
+                ),
+                Text('三个 Flexible 的 flex：1:2:1'),
+                Container(
+                  child: Flex(
+                    direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Flexible(
                         flex: 1,
                         child: Container(
                           height: 30.0,
+                          width: 30.0,
                           color: Colors.yellow,
                         ),
                       ),
-                      Expanded(
+                      Flexible(
                         flex: 2,
                         child: Container(
-                          width: 100.0,
                           height: 30.0,
+                          width: 30.0,
                           color: Colors.green,
                         ),
                       ),
-                      Expanded(
+                      Flexible(
                         flex: 1,
                         child: Container(
-                          width: 60.0,
                           height: 30.0,
+                          width: 30.0,
                           color: Colors.blue,
                         ),
                       ),
@@ -53,9 +89,8 @@ class FlexWidget extends StatelessWidget {
                   width: 30.0,
                   height: 30.0,
                 ),
-                Text('三个 Widget 的 flex：1:1:1'),
+                Text('三个 Expanded 的 flex：1:2:1'),
                 Container(
-                  color: Colors.purple,
                   child: Flex(
                     direction: Axis.horizontal,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -64,22 +99,60 @@ class FlexWidget extends StatelessWidget {
                         flex: 1,
                         child: Container(
                           height: 30.0,
+                          width: 30.0,
                           color: Colors.yellow,
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
-                          width: 100.0,
                           height: 30.0,
+                          width: 30.0,
                           color: Colors.green,
                         ),
                       ),
                       Expanded(
                         flex: 1,
                         child: Container(
-                          width: 60.0,
                           height: 30.0,
+                          width: 30.0,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 30.0,
+                  height: 30.0,
+                ),
+                Text('三个 Expanded 的 flex：1:1:1'),
+                Container(
+                  child: Flex(
+                    direction: Axis.horizontal,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: 30.0,
+                          width: 30.0,
+                          color: Colors.yellow,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: 30.0,
+                          width: 30.0,
+                          color: Colors.green,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          height: 30.0,
+                          width: 30.0,
                           color: Colors.blue,
                         ),
                       ),

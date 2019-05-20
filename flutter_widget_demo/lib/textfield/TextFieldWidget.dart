@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(TextFieldWidget());
 
 class TextFieldWidget extends StatelessWidget {
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,7 +14,19 @@ class TextFieldWidget extends StatelessWidget {
       ),
       home: Scaffold(
           appBar: AppBar(title: Text("Flutter UI基础Widget -- 文本")),
-          body: TextField()),
+          body: Column(
+            children: <Widget>[
+              TextField(
+                controller: _controller,
+              ),
+              RaisedButton(
+                child: Text('获取输入框的内容'),
+                onPressed: () {
+                  print(_controller.text);
+                },
+              )
+            ],
+          )),
     );
   }
 }
