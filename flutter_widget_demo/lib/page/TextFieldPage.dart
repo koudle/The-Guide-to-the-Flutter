@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_demo/textfield/FormWidget.dart';
 import 'package:flutter_widget_demo/textfield/TextFieldWidget.dart';
 
 class TextFieldPage extends StatelessWidget {
@@ -18,6 +19,15 @@ class TextFieldPage extends StatelessWidget {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => TextFieldWidget()));
+            },
+          ),
+          GestureDetector(
+            child: ListTile(
+              title: Text('Form'),
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FormWidget()));
             },
           )
         ],

@@ -13,7 +13,7 @@ class TextFieldWidget extends StatelessWidget {
         primaryColor: Colors.blue,
       ),
       home: Scaffold(
-          appBar: AppBar(title: Text("Flutter UI基础Widget -- 文本")),
+          appBar: AppBar(title: Text("Flutter UI基础Widget -- 输入框")),
           body: Column(
             children: <Widget>[
               TextField(
