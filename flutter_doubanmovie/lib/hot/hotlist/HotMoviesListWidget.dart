@@ -32,7 +32,7 @@ class HotMoviesListWidgetState extends State<HotMoviesListWidget> with Automatic
   void _getData() async {
     List<HotMovieData> serverDataList = new List();
     var response = await http.get(
-        'https://api.douban.com/v2/movie/in_theaters?city=' +
+        'https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=' +
             widget.curCity +
             '&start=0&count=10');
     //成功获取数据
