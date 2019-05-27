@@ -32,8 +32,8 @@ class CounterState extends State<CounterWidget> {
       home: Scaffold(
         appBar: AppBar(title: Text("Flutter 响应式编程")),
         body: StreamBuilder(
-          initialData: 0,
           stream: _stream,
+          initialData: 0,
           builder: (context, snapShot) {
             return Center(
               child: Text('${snapShot.data}'),
@@ -43,10 +43,14 @@ class CounterState extends State<CounterWidget> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            _sink.add(++_count);
+            _calculate();
           },
         ),
       ),
     );
+  }
+
+  void _calculate(){
+    _sink.add(++_count);
   }
 }

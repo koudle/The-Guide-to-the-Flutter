@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class HotMovieData {
   Rating rating;
   List<String> genres;

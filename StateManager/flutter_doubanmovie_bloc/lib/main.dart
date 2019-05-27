@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_doubanmovie/citys/CitysWidget.dart';
-import 'package:flutter_doubanmovie/hot/HotWidget.dart';
-import 'package:flutter_doubanmovie/mine/MineWidget.dart';
-import 'package:flutter_doubanmovie/movies/MoviesWidget.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_doubanmovie/bloc/CityBloc.dart';
+import 'package:flutter_doubanmovie/bloc/HotMoviesListBloc.dart';
+import 'package:flutter_doubanmovie/ui/citys/CitysWidget.dart';
+import 'package:flutter_doubanmovie/ui/hot/HotWidget.dart';
+import 'package:flutter_doubanmovie/ui/mine/MineWidget.dart';
+import 'package:flutter_doubanmovie/ui/movies/MoviesWidget.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -62,7 +66,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetItems[_selectedIndex], //选中不同的选项显示不同的界面,
+      body: BlocProviderTree(
+        blocProviders: [
+          BlocProvider<CityBloc>(bloc: CityBloc()),
+          BlocProvider<HotMoviesListBloc>(bloc: HotMoviesListBloc())
+        ],
+        child: _widgetItems[_selectedIndex], //选中不同的选项显示不同的界面
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('热映')),
@@ -84,3 +94,5 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 }
+
+
