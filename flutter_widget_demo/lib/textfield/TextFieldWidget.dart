@@ -17,6 +17,10 @@ class TextFieldWidget extends StatelessWidget {
           body: Column(
             children: <Widget>[
               TextField(
+                maxLength: 10,
+                decoration: InputDecoration(
+                  counterText: ''
+                ),
                 controller: _controller,
               ),
               RaisedButton(

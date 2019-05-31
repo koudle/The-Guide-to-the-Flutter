@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_doubanmovie/bloc/CityBloc.dart';
-import 'package:flutter_doubanmovie/bloc/HotMoviesListBloc.dart';
-import 'package:flutter_doubanmovie/ui/hot/hotlist/HotMoviesListWidget.dart';
+import 'package:flutter_doubanmovie/main.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiver/strings.dart' as strings;
+
+import 'hotlist/HotMoviesListWidget.dart';
 
 class HotWidget extends StatefulWidget {
   @override
@@ -26,15 +25,18 @@ class HotWidgetState extends State<HotWidget> {
   Widget build(BuildContext context) {
     // TODO: implement build
     print('HotWidgetState build');
-
-    return BlocBuilder(
-      bloc: BlocProvider.of<CityBloc>(context),
-      builder: (context, CityState cityState) {
-        if (strings.isNotEmpty(cityState?.curCity) ) {
+    return StoreConnector<CityState, String>(
+      converter: (store) {
+        String curCity = store.state.curCity;
+        if (curCity == null) {
+          //如果 curCity 为 null，说明没有初始化，则触发初始化
+          store.dispatch(InitCityAction(null));
+        }
+        return curCity;
+      },
+      builder: (context, curCity) {
+        if (curCity != null && curCity.isNotEmpty) {
           //如果 curCity 不为空
-          BlocProvider.of<HotMoviesListBloc>(context)
-              .dispatch(HotMoviesEvent(cityState.curCity));
-
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -46,11 +48,11 @@ class HotWidgetState extends State<HotWidget> {
                   children: <Widget>[
                     GestureDetector(
                       child: Text(
-                        cityState.curCity,
+                        curCity,
                         style: TextStyle(fontSize: 16),
                       ),
                       onTap: () {
-                        _jumpToCitysWidget();
+                        _jumpToCitysWidget(curCity);
                       },
                     ),
                     Icon(Icons.arrow_drop_down),
@@ -98,7 +100,7 @@ class HotWidgetState extends State<HotWidget> {
                             child: TabBarView(
                               physics: ClampingScrollPhysics(),
                               children: <Widget>[
-                                HotMoviesListWidget(),
+                                HotMoviesListWidget(curCity),
                                 Center(
                                   child: Text('即将上映'),
                                 )
@@ -121,14 +123,16 @@ class HotWidgetState extends State<HotWidget> {
     );
   }
 
-  void _jumpToCitysWidget() async {
-    var selectCity = await Navigator.pushNamed(context, '/Citys',
-        arguments: BlocProvider.of<CityBloc>(context).currentState.curCity);
+  void _jumpToCitysWidget(String curCity) async {
+    var selectCity =
+        await Navigator.pushNamed(context, '/Citys', arguments: curCity);
     if (selectCity == null) return;
 
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('curCity', selectCity); //存取数据
 
-    BlocProvider.of<CityBloc>(context).dispatch(CityEvent(selectCity));
+    setState(() {
+      curCity = selectCity;
+    });
   }
 }

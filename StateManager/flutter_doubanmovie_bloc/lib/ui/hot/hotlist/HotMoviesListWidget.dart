@@ -29,8 +29,8 @@ class HotMoviesListWidgetState extends State<HotMoviesListWidget>
 
     return BlocBuilder(
       bloc: BlocProvider.of<HotMoviesListBloc>(context),
-      builder: (context, moviesList) {
-        if (moviesList == null || moviesList.isEmpty) {
+      builder: (context,HotMoviesListState moviesListState) {
+        if (moviesListState == null || moviesListState.list == null || moviesListState.list.length == 0) {
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -39,9 +39,9 @@ class HotMoviesListWidgetState extends State<HotMoviesListWidget>
             removeTop: true,
             context: context,
             child: ListView.separated(
-              itemCount: moviesList.length,
+              itemCount: moviesListState.list.length,
               itemBuilder: (context, index) {
-                return HotMovieItemWidget(moviesList[index]);
+                return HotMovieItemWidget(moviesListState.list[index]);
               },
               separatorBuilder: (context, index) {
                 return Divider(

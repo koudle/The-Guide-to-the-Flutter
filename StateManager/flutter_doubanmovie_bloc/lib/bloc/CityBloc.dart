@@ -1,6 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+class CityState{
+  String _curCity;
+
+  get curCity => _curCity;
+
+  CityState(this._curCity);
+
+}
+
 class CityEvent {
   String _city;
 
@@ -9,8 +19,7 @@ class CityEvent {
   CityEvent(this._city);
 }
 
-class CityBloc extends Bloc<CityEvent, String> {
-  String _curCity;
+class CityBloc extends Bloc<CityEvent, CityState> {
 
   CityBloc() {
     initData();
@@ -24,16 +33,13 @@ class CityBloc extends Bloc<CityEvent, String> {
     dispatch(CityEvent(city));
   }
 
-  get curCity => _curCity;
-
   @override
   // TODO: implement initialState
-  get initialState => ''; //默认值为空
+  get initialState => CityState(null); //默认值为空
 
   @override
-  Stream<String> mapEventToState(CityEvent event) async*{
+  Stream<CityState> mapEventToState(CityEvent event) async*{
     // TODO: implement mapEventToState
-    _curCity = event.city;
-    yield _curCity;
+    yield new CityState(event.city);
   }
 }
