@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_doubanmovie/main.dart';
+import 'package:flutter_doubanmovie/actions/AppActions.dart';
+import 'package:flutter_doubanmovie/state/AppState.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'hotlist/HotMoviesListWidget.dart';
@@ -25,16 +27,10 @@ class HotWidgetState extends State<HotWidget> {
   Widget build(BuildContext context) {
     // TODO: implement build
     print('HotWidgetState build');
-    return StoreConnector<CityState, String>(
-      converter: (store) {
-        String curCity = store.state.curCity;
-        if (curCity == null) {
-          //如果 curCity 为 null，说明没有初始化，则触发初始化
-          store.dispatch(InitCityAction(null));
-        }
-        return curCity;
-      },
-      builder: (context, curCity) {
+
+    return StoreBuilder<AppState>(
+      builder: (context, store) {
+        String curCity = store.state.cityState.curCity;
         if (curCity != null && curCity.isNotEmpty) {
           //如果 curCity 不为空
           return Column(
@@ -52,7 +48,7 @@ class HotWidgetState extends State<HotWidget> {
                         style: TextStyle(fontSize: 16),
                       ),
                       onTap: () {
-                        _jumpToCitysWidget(curCity);
+                        _jumpToCitysWidget(store,curCity);
                       },
                     ),
                     Icon(Icons.arrow_drop_down),
@@ -115,6 +111,7 @@ class HotWidgetState extends State<HotWidget> {
           );
         } else {
           //如果 curCity 为空
+          store.dispatch(InitAction());
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -123,7 +120,7 @@ class HotWidgetState extends State<HotWidget> {
     );
   }
 
-  void _jumpToCitysWidget(String curCity) async {
+  void _jumpToCitysWidget(Store<AppState> store,String curCity) async {
     var selectCity =
         await Navigator.pushNamed(context, '/Citys', arguments: curCity);
     if (selectCity == null) return;
@@ -131,8 +128,6 @@ class HotWidgetState extends State<HotWidget> {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString('curCity', selectCity); //存取数据
 
-    setState(() {
-      curCity = selectCity;
-    });
+    store.dispatch(ChangeCityAction(selectCity));
   }
 }

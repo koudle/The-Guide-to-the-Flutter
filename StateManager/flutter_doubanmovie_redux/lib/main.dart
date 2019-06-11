@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_doubanmovie/state/AppState.dart';
 import 'package:flutter_doubanmovie/ui/citys/CitysWidget.dart';
 import 'package:flutter_doubanmovie/ui/hot/HotWidget.dart';
 import 'package:flutter_doubanmovie/ui/mine/MineWidget.dart';
 import 'package:flutter_doubanmovie/ui/movies/MoviesWidget.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_doubanmovie/reducers/AppReducer.dart';
+import 'package:flutter_doubanmovie/middlewares/AppMiddlewares.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -62,16 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _widgetItems = [HotWidget(), MoviesWidget(), MineWidget()];
 
-  final _cityStore = Store<CityState>(
-    changeCityReducer,
-    initialState: CityState(null),
-    middleware: [readCityFromDisk]
+  final _cityStore = Store<AppState>(
+    appReducer,
+    initialState: AppState(CityState(null),HotMovieState(null,null)),
+    middleware: [appMiddlewares],
+    syncStream: true
   );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StoreProvider<CityState>(
+      body: StoreProvider<AppState>(
         store: _cityStore,
         child: _widgetItems[_selectedIndex], //选中不同的选项显示不同的界面,,
       ),
@@ -95,53 +98,4 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index; //刷新界面
     });
   }
-}
-
-
-class InitCityAction {
-  String city;
-
-  InitCityAction(this.city);
-}
-
-class ChangeCityAction {
-  String city;
-}
-
-class CityState {
-  String curCity;
-
-  CityState(this.curCity);
-}
-
-void readCityFromDisk(
-    Store<CityState> store, dynamic action, NextDispatcher next) async {
-  if (action is InitCityAction) {
-    String city = await initCity();
-    next(InitCityAction(city));
-    return;
-  }
-
-  next(action);
-}
-
-Future<String> initCity() async {
-  final prefs = await SharedPreferences.getInstance(); //获取 prefs
-
-  String city = prefs.getString('curCity'); //获取 key 为 curCity 的值
-
-  if (city == null || city.isEmpty) {
-    //如果 city 为空，则使用默认值
-    city = '深圳';
-  }
-  return city;
-}
-
-
-CityState changeCityReducer(CityState state, dynamic action) {
-  if(action is InitCityAction){
-    return CityState(action.city);
-  }
-
-  return state;
 }

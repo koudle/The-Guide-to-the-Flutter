@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_doubanmovie/ui/hot/hotlist/data/HotMovieData.dart';
+import 'package:flutter_doubanmovie/state/data/HotMovieData.dart';
 
 class HotMovieItemWidget extends StatefulWidget {
   HotMovieData hotMovieData;
