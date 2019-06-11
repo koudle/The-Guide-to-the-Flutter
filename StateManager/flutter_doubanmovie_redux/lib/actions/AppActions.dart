@@ -13,14 +13,6 @@ class ChangeCityAction {
   ChangeCityAction(this._city);
 }
 
-class FetchHotMoviesAction {
-  String _city;
-
-  get city => _city;
-
-  FetchHotMoviesAction(this._city);
-}
-
 class FetchHotMovieListSuccessAction {
   int _code;
   List<HotMovieData> _hotMovieList;
