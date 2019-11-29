@@ -10,9 +10,9 @@ import 'package:http/http.dart' as http;
 void appMiddlewares(
     Store<AppState> store, Object action, NextDispatcher next) async {
   if (action is InitAction) {
-    initCity(store);
+    await initCity(store);
   } else if (action is ChangeCityAction) {
-    _getData(store, action);
+    await _getData(store, action);
   }
 
   next(action);
